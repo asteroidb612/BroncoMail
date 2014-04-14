@@ -1,29 +1,43 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
 <head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
+<meta charset="utf-8">
+<title>My AngularJS App</title>
+<link rel="stylesheet" href="css/app.css"/>
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+
+<script src="js/MinFaker.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.min.js"></script>
+<script src="../bower_components/angular-strap/dist/angular-strap.min.js"></script> 
+<script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+<script src="../bower_components/angular-route/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/directives.js"></script>
 </head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+<body ng-controller="BroncoMailController">
 
-  <div ng-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-route/angular-route.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/directives.js"></script>
+<div class="container-fluid" >
+  <div class="page-header">
+    <h1> <span class="glyphicon glyphicon-send"></span> Bronco Mail</h1> </div>
+  <div class="row-fluid">
+    <div class="span4">
+      <input class="form-control input-lg" ng-model="query" placeHolder="Search">
+    </div>
+    <div class=" span12" >
+      <ul class="people">
+        <li class="item" ng-repeat="recipient in recipients | filter:query">
+        <button type="button" class="btn btn-lg btn-primary ng-scope"  
+          bs-modal="modal" data-animation="am-fade-and-slide-top" 
+          ng-click="zoom(recipient)" data-placement="center">
+          {{recipient.first}}</br>{{recipient.last}}</br>
+          <img width="128px" height="128px" ng-src="{{recipient.image}}"></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 </body>
 </html>

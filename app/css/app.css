@@ -28,3 +28,48 @@
   content: "";
   padding: 0;
 }
+
+.item {
+  font-size: 25px;
+  float: left;
+  padding: .5em;
+  display: inline-block;
+  background: 999;
+
+}
+h1 {
+  text-align: center;
+}
+
+.modal-backdrop.am-fade {
+  opacity: .5;
+  transition: opacity .15s linear;
+  &.ng-enter {
+    opacity: 0;
+    &.ng-enter-active {
+      opacity: .5;
+    }
+  }
+  &.ng-leave {
+    opacity: .5;
+    &.ng-leave-active {
+      opacity: 0;
+    }
+  }
+}
+
+button {
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  width = 1.6in;
+}
+
+.item img {
+  left-margin: auto;
+  right-margin: auto;
+}
+
+#search {
+  font-size: 30px;
+}
